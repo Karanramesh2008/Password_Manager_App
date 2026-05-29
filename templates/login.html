@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Password Manager</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: #0a0a0a;
+                color: white;
+                font-family: 'Georgia', serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .login-box {
+                background: linear-gradient(145deg, #111111, #1a1a1a);
+                padding: 50px 40px;
+                border-radius: 16px;
+                text-align: center;
+                width: 380px;
+                border: 1px solid #c9a227;
+                box-shadow: 0 0 40px rgba(201, 162, 39, 0.15);
+            }
+
+            .lock-icon {
+                font-size: 48px;
+                margin-bottom: 20px;
+            }
+
+            h1 {
+                color: #c9a227;
+                font-size: 28px;
+                letter-spacing: 2px;
+                margin-bottom: 8px;
+            }
+
+            p {
+                color: #888888;
+                font-size: 14px;
+                margin-bottom: 35px;
+                letter-spacing: 1px;
+            }
+
+            input {
+                width: 100%;
+                padding: 14px;
+                border-radius: 8px;
+                border: 1px solid #c9a227;
+                font-size: 15px;
+                margin-bottom: 20px;
+                background-color: #0a0a0a;
+                color: white;
+                letter-spacing: 2px;
+                outline: none;
+            }
+
+            input:focus {
+                border-color: #f0c040;
+                box-shadow: 0 0 10px rgba(201, 162, 39, 0.3);
+            }
+
+            button {
+                width: 100%;
+                padding: 14px;
+                background: linear-gradient(135deg, #c9a227, #f0c040);
+                color: #0a0a0a;
+                border: none;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                letter-spacing: 2px;
+                transition: 0.3s;
+            }
+
+            button:hover {
+                background: linear-gradient(135deg, #f0c040, #c9a227);
+                box-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
+            }
+
+            .divider {
+                border: none;
+                border-top: 1px solid #333;
+                margin: 25px 0;
+            }
+
+            .footer {
+                color: #555;
+                font-size: 12px;
+                letter-spacing: 1px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="login-box">
+            <div class="lock-icon">🔐</div>
+            <h1>VAULT</h1>
+            <p>ENTER MASTER PASSWORD TO UNLOCK</p>
+            <form action="/login" method="POST">
+                <input type="password" name="master" placeholder="••••••••••••">
+                <button type="submit">UNLOCK</button>
+            </form>
+            <hr class="divider">
+            <p class="footer">YOUR PASSWORDS ARE ENCRYPTED & SAFE</p>
+        </div>
+    </body>
+</html>

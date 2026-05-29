@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Valut=Home</title>
+        <style>
+            * {margin:0;padding: 0;box-sizing: border-box;}
+            body{
+                background-color: #0a0a0a;
+                color: white;
+                font-family:'Georgia',serif;
+            }
+            .navbar{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #111111;
+                border-bottom:1px solid #c9a227 ;
+                padding: 15px 30px;
+
+            }
+            .navbar h1{
+                color: #c9a227;
+                font-size: 22px;
+                letter-spacing: 1px;
+            }
+            .navbar a{
+                padding: 8px 18px;
+                color: #0a0a0a;
+                background: #c9a227;
+                border-radius: 6px;
+                font-size: 13px;
+                margin-left: 10px;
+                letter-spacing: 1px;
+                text-decoration: none;
+            }
+            .navbar a:hover{
+                background: linear-gradient(135deg, #f0c040, #c9a227);
+                box-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
+            }
+            .content{
+                padding: 30px;
+            }
+            .card{
+                background: #111111;
+                border: 1px solid #333;
+                border-left: 3px solid #c9a227;
+                border-radius: 8px;
+                padding: 16px 20px;
+                margin: 10px 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .card-info span{
+                display: block;
+            }
+            .site{ color: #c9a227; font-size: 16px; letter-spacing: 1px;}
+            .username {color: #888;font-size: 13px; margin-top: 4px;}
+            .password {color: #555;font-size: 13px; margin-top: 2px;letter-spacing: 2px;}
+
+            .delete-btn{
+                padding: 6px 16px;
+                background: #c9a227;
+                border: 1px solid #e9a227;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 13px;
+            }
+            .delete-btn:hover {
+                background: linear-gradient(135deg, #f0c040, #c9a227);
+                box-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
+            }
+            .empty {color: #555; text-align: center;margin-top: 60px;font-size: 16px;letter-spacing: 1px;}
+        </style>
+    </head>
+    <body>
+        <div class="navbar">
+            <h1>Valut</h1>
+            <div class="nav-links">
+                <a href="/add">+ Add Password</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+
+        <div class="content">
+            {% if passwords %}
+                {% for p in passwords %}
+                    <div class="card">
+                        <div class="card-info">
+                            <span class="site">{{p[1]}}</span>
+                            <span class="username">{{p[2]}}</span>
+                            <span class="password" id="pass-{{ p[0] }}">••••••••••••</span>
+                            <button onclick= "togglePassword('pass-{{p[0]}}','{{ p[3]}}')"
+                                    style="background:none; border:none; color:#c9a227;cursor: pointer;font-size: 12px;margin-top: 4px;">
+                                Show
+                            </button>
+
+                        </div>
+                        <form action="/delete" method="post">
+                            <input type="hidden" name="site" value="{{p[1]}}">
+                            <button class="delete-btn" type="submit">Delete</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="empty">No passwords saved yet. Add your first one!</p>
+            {% endif %}
+        </div>
+        <script>
+            function togglePassword(id,password) {
+                let el=document.getElementById(id)
+                if (el.innerText==='••••••••••••'){
+                    el.innerText=password;
+                }else{
+                    el.innerText='••••••••••••';
+                }
+            }
+    </script>
+    </body>
+</html>
